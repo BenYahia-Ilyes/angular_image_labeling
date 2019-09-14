@@ -1,0 +1,17 @@
+<div>    
+    <div class="row">    
+      <div class="col-sm-12 btn btn-primary">    
+        Image Gallery    
+      </div>    
+    </div>    
+    
+    <div class="row">    
+      <ul>    
+        <li *ngFor="let img of (allImages)">    
+          <a [routerLink]="['/image', img.id]">    
+            <img src="{{img.url}}" class="img" width="240" height="170">    
+          </a>    
+        </li>    
+      </ul>    
+    </div>    
+  </div>    
