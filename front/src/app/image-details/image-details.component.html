@@ -1,0 +1,73 @@
+<div class="row">  
+    <div class=col-md-1>  
+        <button type="button" class="next btn ">  
+              <a [routerLink]="['/image', image.id-1]">  previous  </a>
+        </button>
+    </div>  
+
+    <div class=col-md-10>  
+      <div [ngStyle]="{'background-image':'url('+ image.url +')'}" class="img-container">  
+      </div>  
+    </div>  
+
+    <div class=col-md-1>  
+      <button type="button" class="next btn btn-info "> 
+          <a [routerLink]="['/image', image.id+1]">  nexttttttttttt  </a> 
+        </button>
+    </div>  
+
+</div>  
+
+ 
+  <div class="row">
+        <div class=col-md-4>  
+          <div  class="input-container">  
+
+
+                  <h5 class="card-header info-color white-text text-center py-4">
+                    <strong> Model labeling</strong>
+                  </h5>
+
+
+
+          </div>  
+        </div>  
+
+       <div class=col-md-4>  
+          <div  class="input-container">  
+
+              <h5 class="card-header info-color white-text text-center py-4">
+                  <strong> camera labeling</strong>
+                </h5>
+
+                <button type="button" class="next btn btn-info "> 
+                  <a [routerLink]="['/']"> homee  </a> 
+                </button>
+
+
+          </div>  
+        </div>  
+
+        <div class=col-md-4>  
+            <div  class="input-container">  
+
+
+                <h5 class="card-header info-color white-text text-center py-4">
+                    <strong> manuel labeling</strong>
+                  </h5>
+
+
+
+                  <input  type="text"  class="form-control mb-4 inputt"  placeholder="color"  [(ngModel)]="color"   >
+                  <input  type="text"  class="form-control mb-4 inputt"  placeholder="license" [(ngModel)]="license"  >
+                  <input  type="text"  class="form-control mb-4 inputt"  placeholder="brand" [(ngModel)]="brand"  >
+                  <input  type="text"  class="form-control mb-4 inputt"  placeholder="size" [(ngModel)]="size" >
+                  <input  id="defaultLoginFormPassword" class="form-control mb-4 inputt" placeholder="Password" (keyup)="print()">
+
+                  <button type="button" class="btn btn-info submitt" (click) = "savee()">  save </button>
+
+            </div>  
+          </div>  
+    
+  
+        </div>  

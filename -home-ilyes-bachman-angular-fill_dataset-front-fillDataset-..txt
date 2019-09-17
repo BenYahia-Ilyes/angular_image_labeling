@@ -1,0 +1,1 @@
+/home/ilyes/bachman/angular/fill_dataset/front/fillDataset/.gitignore
