@@ -25,7 +25,7 @@ CORS(app)
 
 @app.route('/image_list')
 def get_images():
-    path="/home/ilyes/bachman/angular/fill_dataset/front/fillDataset/src/assets/Images"
+    path="/home/ilyes/bachman/angular/fill_dataset/front/src/assets/Images"
     imagePaths = sorted(list(paths.list_images(path)))
    
     path_list=[]
@@ -36,20 +36,45 @@ def get_images():
 
 
 
-    result = {
 
-        'path_list' : path_list,
-	}
 
-    return jsonify({'result' : result})
+    return jsonify( path_list )
 	
+
+
+@app.route('/cam_list')
+def cam_list():
+
+    pathCamIn="/home/ilyes/Desktop/cam.csv"
+    camCSV = pd.read_csv( pathCamIn)
+
+
+
+
+    l=[]
+    for i in range(len(camCSV)):
+        templist=[]
+        templist.append(camCSV['color'][i])
+        templist.append(camCSV['brand'][i])
+        templist.append(camCSV['license'][i])
+
+
+        l.append(templist)
+    print(l)
+
+
+
+    return jsonify(l)
+	
+
+
 
 listframe=[]
 id_list=[]
 
 
 @app.route('/save', methods=['POST'])
-def register():
+def save():
     id = request.get_json()['id']
     url = request.get_json()['url']
     color = request.get_json()['color']
@@ -62,6 +87,7 @@ def register():
     templist.append(id)
     templist.append(color)
     templist.append(brand)
+    templist.append(license)
     templist.append(url)
    
     #print(color)
@@ -74,8 +100,8 @@ def register():
 
     listframe.append(templist)
 
-    df = pd.DataFrame(listframe, columns = ['id','color','brand','license'])
-    df.to_csv('/home/ilyes/Desktop/out.csv')
+    df = pd.DataFrame(listframe, columns = ['id','color','brand','license','url'])
+    df.to_csv('/home/ilyes/Desktop/out.csv',index=False)
     id_list.append(id)
 
 
@@ -83,7 +109,7 @@ def register():
 		'state' : "saved"
 	}
 
-    print(request.get_json())
+    #print(request.get_json())
     return jsonify({'result' : result})
 	
 

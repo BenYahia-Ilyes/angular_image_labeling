@@ -8,7 +8,8 @@ import { GalleryComponent } from './image-gallery/image-gallery.component';
 import { ImageDetailComponent } from './image-details/image-details.component';     
 import { FilterimagesPipe  } from "./filterimages.pipe"    
 import { HttpClientModule } from '@angular/common/http'; 
-  
+import { GetinfoService  } from './getinfo.service';    
+
 
 const routes: Routes = [
   { path: '', component: GalleryComponent },
@@ -38,7 +39,18 @@ const routes: Routes = [
     FormsModule,    
     RouterModule.forRoot(routes)    
   ],    
-  providers: [ImageService, FilterimagesPipe],    
+  providers: [ImageService, FilterimagesPipe,GetinfoService],    
   bootstrap: [AppComponent]    
 })    
-export class AppModule { }   
+export class AppModule {
+
+
+  constructor(private imageService: ImageService, private GetinfoService : GetinfoService) { 
+    
+    this.imageService.get_paths()  
+   this.GetinfoService.cam_list()
+
+   console.log("aaa")
+
+  }
+ }   

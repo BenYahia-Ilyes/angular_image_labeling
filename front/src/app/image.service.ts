@@ -13,19 +13,17 @@ export class ImageService {
     this.http.get('http://127.0.0.1:5000/image_list').subscribe(data => {
         this.serverData = data as JSON;
 
-
-
-
-        for (var i = 0; i < this.serverData.result.path_list.length; i++) {
-            var singleObj = {};
-            singleObj['id'] = i+1;
-            singleObj['color'] = "";
-            singleObj['brand'] = "";
-            singleObj["license"] = "";
-            singleObj["url"] = this.serverData.result.path_list[i];
+        for (var i = 0; i < this.serverData.length; i++) {
+            var singleObj = {}              ;
+            singleObj['id'] = i+1           ;
+            singleObj['color'] = ""         ;
+            singleObj['brand'] = ""         ;
+            singleObj["license"] = ""       ;
+            singleObj["url"] = this.serverData[i];
 
             Imagesdelatils.push(singleObj);                }
 
+            
 
         console.log(Imagesdelatils); 
         
@@ -44,7 +42,8 @@ export class ImageService {
 
 
 
-    get_color(id: number) {    
+    get_color(id: number) {  
+
         return Imagesdelatils.find(Images => Images.id == id).color
     }     
 
@@ -85,9 +84,10 @@ export class ImageService {
         })  
 
         }   
-
-
 }    
+
+
+
 const Imagesdelatils = [    
 
 ]    

@@ -1,73 +1,122 @@
-<div class="row">  
-    <div class=col-md-1>  
-        <button type="button" class="next btn ">  
-              <a [routerLink]="['/image', image.id-1]">  previous  </a>
-        </button>
-    </div>  
+<div class="row">
 
-    <div class=col-md-10>  
-      <div [ngStyle]="{'background-image':'url('+ image.url +')'}" class="img-container">  
-      </div>  
-    </div>  
 
-    <div class=col-md-1>  
-      <button type="button" class="next btn btn-info "> 
-          <a [routerLink]="['/image', image.id+1]">  nexttttttttttt  </a> 
-        </button>
-    </div>  
+          <div class=col-md-4> 
+              <img class="logo" src="../../assets/img/a.png" >    
+
+          </div>  
+
+          <div class=col-md-5> 
+        
+        </div>  
+
+
+          <div class=col-md-3> 
+
+
+              <button type="button" class="home_btn btn-lg  btn btn-outline-dark">
+                  <a [routerLink]="['/']"> HOME  </a> 
+
+             </button>
+
+
+        </div>  
 
 </div>  
 
- 
-  <div class="row">
-        <div class=col-md-4>  
-          <div  class="input-container">  
+
+<div class="row">
 
 
-                  <h5 class="card-header info-color white-text text-center py-4">
-                    <strong> Model labeling</strong>
-                  </h5>
-
-
-
+        <div class=col-md-12>  
+          <div [ngStyle]="{'background-image':'url('+ image.url +')'}" class="img-container">  
+              <a class="prev" [routerLink]="['/image', image.id-1]"   >&#10094;</a>
+              <a class="next"  [routerLink]="['/image', image.id+1]"  >&#10095; </a>
           </div>  
         </div>  
 
-       <div class=col-md-4>  
-          <div  class="input-container">  
-
-              <h5 class="card-header info-color white-text text-center py-4">
-                  <strong> camera labeling</strong>
-                </h5>
-
-                <button type="button" class="next btn btn-info "> 
-                  <a [routerLink]="['/']"> homee  </a> 
-                </button>
 
 
-          </div>  
-        </div>  
+    </div>  
+
+    
+      <div class="row">
+            <div class=col-md-4>  
+              <div  class="input-container">  
+
+
+                      <h5 class=" head_name card-header info-color white-text text-center py-4">
+                        <strong> Model labeling</strong>
+                      </h5>
+
+                      <input  type="text"  class="form-control mb-4 inputt"   placeholder=feature_1 disabled="disabled"  > 
+                           
+                      <input  type="text"  class="form-control mb-4 inputt"  placeholder=feature_2   disabled="disabled"> 
+                      <input  type="text"  class="form-control mb-4 inputt"  placeholder=feature_3   disabled="disabled">
+                      <input  type="text"  class="form-control mb-4 inputt"  placeholder=feature_4  disabled="disabled">
+                      <input  type="text"  class="form-control mb-4 inputt"  placeholder=feature_5  disabled="disabled">
+
+              </div>  
+            </div>  
+
+          <div class=col-md-4>  
+              <div  class="input-container">  
+               
+                   <h5 class=" head_name card-header info-color white-text text-center py-4">
+                      <strong> camera labeling</strong>
+                    </h5>
+
+                      <div >
+                        <input  type="text"  class="d-inline form-control mb-4 inputt"   [(ngModel)]="cam_color" disabled="disabled"   >                       
+                          <span class="d-inline " *ngIf="test.cam_color" >&#10003;</span>
+                      </div>
+             
+
+                        <div >
+                           <input  type="text"  class="d-inline form-control mb-4 inputt"   [(ngModel)]="cam_brand" disabled="disabled"   >                       
+                            <span class="d-inline "  *ngIf="test.cam_license"   >&#10003;</span>
+                        </div>
+               
+
+                        <div >
+                            <input  type="text"  class="d-inline form-control mb-4 inputt"   [(ngModel)]="cam_license" disabled="disabled"   >                       
+                              <span class="d-inline " *ngIf="test.cam_brand" >&#10003;</span>
+                          </div>
+                 
+      
+
+                    <input  type="text"  class="form-control mb-4 inputt"  placeholder=feature_4 disabled="disabled">
+                    <input  type="text"  class="form-control mb-4 inputt"  placeholder=feature_5  disabled="disabled">
+
+
+              </div>  
+            </div>  
 
         <div class=col-md-4>  
             <div  class="input-container">  
 
 
-                <h5 class="card-header info-color white-text text-center py-4">
+                <h5 class=" head_name card-header info-color white-text text-center py-4">
                     <strong> manuel labeling</strong>
                   </h5>
 
 
 
-                  <input  type="text"  class="form-control mb-4 inputt"  placeholder="color"  [(ngModel)]="color"   >
-                  <input  type="text"  class="form-control mb-4 inputt"  placeholder="license" [(ngModel)]="license"  >
-                  <input  type="text"  class="form-control mb-4 inputt"  placeholder="brand" [(ngModel)]="brand"  >
-                  <input  type="text"  class="form-control mb-4 inputt"  placeholder="size" [(ngModel)]="size" >
-                  <input  id="defaultLoginFormPassword" class="form-control mb-4 inputt" placeholder="Password" (keyup)="print()">
+                  <input  type="text"  class="form-control mb-4 inputt"  placeholder="color"   [(ngModel)]="color"     (keyup)="check_camcolor()" >
+                  <input  type="text"  class="form-control mb-4 inputt"  placeholder="license" [(ngModel)]="license"  (keyup)="check_camlicense()"   >
+                  <input  type="text"  class="form-control mb-4 inputt"  placeholder="brand"   [(ngModel)]="brand"     (keyup)="check_cambrand()"  >
+                  <input  type="text"  class="form-control mb-4 inputt"  placeholder=feature_4 [(ngModel)]="size"  >
+                  <input  type="text"  class="form-control mb-4 inputt"  placeholder=feature_5  >
 
-                  <button type="button" class="btn btn-info submitt" (click) = "savee()">  save </button>
+                  <button type="button" class=" save btn btn-info submitt" (click) = "save()"  [routerLink]="['/image', image.id+1]"  >  save </button>
 
             </div>  
           </div>  
     
   
-        </div>  
+
+
+
+
+
+ </div>
